@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    body{
+      background-color:  rgb(0, 0, 0);
+      font-family: Arial;
+
+    }
+    .num-btn{
+      width:60px;
+      height:60px;
+      border-radius:30px;
+      font-size: 27px;
+      background-color: rgb(51, 51, 51);
+      color:white;
+      border:none;
+    }
+    .math-btn{
+      background-color: rgb(254, 160, 10);
+      color:white;
+      width:60px;
+      height:60px;
+      border-radius:30px;
+      font-size: 27px;
+      border:none;
+
+    }
+    .display-cal{
+      color:white;
+      font-size: 48px;
+      margin-top: 15px;
+      margin-bottom: 18px;
+    }
+    .clear-btn{
+      font-size:18px
+    }
+  </style>
+
+</head>
+<body>
+  <p class="js-calculation display-cal"></p>
+  <p>
+    <button class="num-btn"
+  onclick="
+  updateCalculation('1');
+  ">
+  1</button>
+  <button class="num-btn"
+  onclick="
+   updateCalculation('2');
+  ">2</button>
+  <button class="num-btn"
+  onclick=" 
+  updateCalculation('3');
+  ">3</button>
+   <button class="math-btn"
+   onclick="
+ 
+   updateCalculation(' + ') ;
+   
+   ">+</button>
+  </p>
+  <p>
+    <button class="num-btn"
+   updateCalculation('4');
+  ">
+  4</button>
+  <button class="num-btn"
+  onclick="
+   updateCalculation('5');
+  ">5</button>
+  <button class="num-btn"
+  onclick="
+   updateCalculation('6');
+  ">6</button>
+  <button class="math-btn"
+  onClick="
+  updateCalculation('-');">
+  -</button>
+  </p>
+  <p>
+    <button class="num-btn"
+  onclick="
+  updateCalculation('7');
+  ">
+  7</button>
+  <button class="num-btn"
+  onclick="
+   updateCalculation('8');
+  ">8</button>
+  <button class="num-btn"
+  onclick="
+   updateCalculation('9');
+  ">9</button>
+  <button class="math-btn" onClick="
+  updateCalculation('*');">
+  *</button>
+
+  </p>
+  <p>
+    <button  class="num-btn"
+    onClick="
+  updateCalculation('0');">
+  0</button>
+  <button class="num-btn"
+  onClick="
+  updateCalculation('.');">
+  .</button>
+  <button class="num-btn"
+  onclick="
+  calculation=eval(calculation);
+  console.log(`calculation:${calculation}`);
+  showCalculation();
+  localStorage.setItem('calculation',calculation);
+  ">=</button>
+  <button class="math-btn" onClick="
+  updateCalculation('/');">
+  /</button>
+   
+  </p>
+  <p>
+    <button class="num-btn clear-btn" onClick="
+    calculation='';
+    console.log(calculation);
+    localStorage.setItem('calculation',calculation);
+    showCalculation();
+    
+    ">
+  Clear</button>
+  </p>
+  <script>
+    let calculation=localStorage.getItem('calculation')||'';
+    showCalculation();
+    
+    function updateCalculation(value){
+      calculation+=value;
+      console.log(calculation);
+      showCalculation();
+      
+    }
+    // Optional: you can also create a function in order
+      // to reuse this code.
+      function saveCalculation() {
+        localStorage.setItem('calculation', calculation);
+      }
+
+      function showCalculation(){
+
+        document.querySelector('.js-calculation').innerHTML=calculation;
+
+      }
+   
+
+
+  </script>
+</body>
+</html>
